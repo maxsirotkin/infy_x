@@ -37,10 +37,10 @@
 
 
 <h1 align = "center">Решение задач:</h1>
-Для выполнения этой лабораторной работы я пользовался:
+Для выполнения этой лабораторной работы я пользовался:<br>
 1. Различным материалом в сети интернет.<br>
-2. Материалом с сайта https://htmlacademy.ru/blog/css/css-background?ysclid=lsy65ncyww813760034
-3. Материалом с сайта https://habr.com/ru/companies/netologyru/articles/690042/
+2. Материалом с сайта https://htmlacademy.ru/blog/css/css-background?ysclid=lsy65ncyww813760034<br>
+3. Материалом с сайта https://habr.com/ru/companies/netologyru/articles/690042/<br>
 
 
 <h1 align = "center">Вывод:</h1>
