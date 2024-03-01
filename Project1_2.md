@@ -31,7 +31,7 @@
 Для выполнения этой лабораторной работы я пользовалась:<br>
 1. Материалом из интернета и помощью одногруппников.<br>
 
-'''htlm
+```htlm
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +61,7 @@
     <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;"> Есть, спать, гулять, играть.</p>
 </body>
 </html>
-'''
+```
 
 <h1 align = "center">Вывод:</h1>
 <p>Узнала фундамент на котором строится веб-сайт.</p>
