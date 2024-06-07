@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form_input{
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;         /*расстояние между текстом и боксом*/
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;         /*расстояние между полями*/
+            font-family: Arial, sans-serif;
+        }
+
+        button{
+            background-color: #888888;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #50c655;
+        }
+
+        .form_error {
+            color:  #ea3e3e;
+            border: 1px solid  #ea3e3e;
+        }
+
+        .error_text {
+            width: 250px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #ea3e3e;
+            color: white;
+            padding: 0.37rem 0.75rem 0.37rem 0.75rem;
+            line-height: 1.5;
+        }
+    
+    </style>
+</head>
+<body>
+    <form action="" id="myForm">
+            <p id="errorMessage" class="error_text" style="display: none">Пожалуйста, заполните все поля корректно!</p>
+
+            <p style="text-align: center; margin-bottom: 30px; font-size: 20px;"><b>РЕГИСТРАЦИЯ</b><p>
+
+            <label for="name"><b>Имя:</b></label><br>
+            <input class="form_input" type="text" id="name" name="name" placeholder="Введите ваше имя"><br>
+                
+            <label for="name"><b>Email:</b></label><br>
+            <input class="form_input" type="email" id="email" name="email" placeholder="email@mail.ru"><br>
+        
+            <label for="password1"><b>Пароль:</b></label><br>
+            <input class="form_input" type="password" id="password1" name="password1"><br>
+
+            <label for="password2"><b>Повторите пароль</b></label><br>
+            <input class="form_input" type="password" id="password2" name="password2"><br>
+
+            <p style="text-align: center;"><button type="submit">Отправить</button></p>
+    </form>
+
+    <script>
+        let message = '';
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Отмена отправки формы, если данные не прошли валидацию
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = message;
+            }
+        });
+    
+        function validateForm() {
+            let nameInput = document.getElementById('name');
+            let emailInput = document.getElementById('email');
+            let passwordInput = document.getElementById('password1');
+            let password2Input = document.getElementById('password2');
+    
+            let name = nameInput.value.trim();
+            let email = emailInput.value.trim();
+            let password = passwordInput.value.trim();
+            let password2 = password2Input.value.trim();
+    
+            if (name === '') {
+                nameInput.classList.add('form_error');
+                message = 'Имя не указано!';
+                return false;
+            } else {
+                nameInput.classList.remove('form_error');
+            }
+    
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailPattern)) {
+                message = 'Неверный формат email!';
+                emailInput.classList.add('form_error');
+                return false;
+            } else {
+                emailInput.classList.remove('form_error');
+            }
+    
+            if (!checkPassword(password)) {
+                passwordInput.classList.add('form_error');
+                message = 'Пароль должен иметь минимум 5 символов. Необходимо использовать символы .?#%, а также строчные и заглавные буквы!';
+                return false;
+            } else {
+                passwordInput.classList.remove('form_error');
+            }
+    
+            if (password !== password2) {
+                passwordInput.classList.add('form_error');
+                password2Input.classList.add('form_error');
+                message = 'Пароли не совпадают!';
+                return false;
+            } else {
+                passwordInput.classList.remove('form_error');
+                password2Input.classList.remove('form_error');
+            }
+    
+            return true;
+        }
+    
+        function checkPassword(password) {
+            if (password.length < 5) {
+                return false;
+            }
+    
+            if (!/[.?#%]/.test(password)) {
+                return false;
+            }
+    
+            if (!/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
+                return false;
+            }
+    
+            return true;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form_input{
+            width: 350px;
+            padding: 10px;
+            margin: 10px 0;         /*расстояние между текстом и боксом*/
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;         /*расстояние между полями*/
+            font-family: Arial, sans-serif;
+        }
+
+        button{
+            background-color: #888888;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #50c655;
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+            <p style="text-align: center; margin-bottom: 30px;">Оставьте свои контакты для обратной связи:<p>
+
+            <label for="name"><b>Имя:</b></label><br>
+            <input class="form_input" type="text" placeholder="Введите ваше имя"><br>
+                
+            <label for="name"><b>Email:</b></label><br>
+            <input class="form_input" type="email" placeholder="email@mail.ru"><br>
+        
+            <label for="message"><b>Комментарий:</b></label><br>
+            <textarea class="form_input" placeholder="Ваши пожелания"></textarea><br>
+
+            <p style="text-align: center;"><button type="submit">Отправить</button></p>
+    </form>
+</body>
+</html>

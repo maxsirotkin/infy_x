@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: "Calibri Light",serif;
+            font-weight: bold;
+            background-color:rgb(255, 206, 123);
+        }
+
+        .form {
+            padding: 10px;
+        }
+
+        .form_grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+
+        .item_grid_1 {
+            display: grid;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        .item_grid_2 {
+            display: grid;
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 1;
+            grid-row-end: 1;
+        }
+
+        .item_grid_3 {
+            display: grid;
+            grid-column-start: 3;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+
+        .item_grid_4 {
+            display: grid;
+            grid-column-start: 4;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 50px;
+            color: white;
+            overflow: hidden;
+            
+
+            background-color: rgba(45, 45, 45, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .btn {
+            width: 20px;
+            height: 20px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 15px;
+            background-color: rgb(230, 159, 8);
+        }
+
+        .btn_1 {
+            background-color: rgba(100, 100, 100, 0.93);
+            width: auto;
+            height: auto;
+            padding: 20px 30px;
+            margin-left: auto; margin-right: auto;
+            font-size: 20px;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .form_flex {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="form">
+    <div class="form_grid form_flex">
+        
+        <div class="items item_grid_1" style="background-color: rgba(179, 179, 179, 0.91);">
+            <div style="font-size: 50px;">
+                Оказание любых углуг в кратчайшие сроки!
+            </div>
+                <div class="btn btn_1">Рассчитать стоимость услуги</div>
+        </div>
+
+        <div class="items item_grid_2">
+            <div style="font-size: 30px;">
+                Услуга №1
+            </div>
+            <div class="btn">></div>
+        </div>
+
+        <div class="items item_grid_3">
+            <div style="font-size: 30px;">
+                Услуга №2
+            </div>
+            <div class="btn">></div>
+        </div>
+
+        <div class="items item_grid_4">
+            <div style="font-size: 30px;">
+                Услуга №3
+            </div>
+            <div class="btn">></div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

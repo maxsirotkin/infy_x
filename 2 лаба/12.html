@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .baza_knopka {
+            display: flex;
+        }
+        .baza_knopka, .spisok {
+            list-style: none;
+        }
+        .knopka {
+            cursor: pointer;
+            background-color: #adadad;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .spisok {
+            display: none;
+            background-color: rgb(228, 228, 228);
+            padding: 1px;
+            color: black;
+            border-radius: 15px;
+            width: 110px;
+        }
+        .punkt {
+            padding: 15px;
+        }
+        .spisok_more {
+            position: relative;
+        }
+        .spisok_more:hover .spisok {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+        }
+        .knopka:hover{
+            background-color: rgba(107, 107, 107, 0.91);
+            color: white;    
+        }
+        .punkt:hover {
+            background-color: rgba(107, 107, 107, 0.91);
+            color: white;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="baza_knopka">
+        <li class="knopka spisok_more"><b>Меню</b>
+            <ul class="spisok">
+                <li class="punkt">Пункт №1</li>
+                <li class="punkt">Пункт №2</li>
+                <li class="punkt">Пункт №3</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

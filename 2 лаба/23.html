@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/table.css">
+</head>
+<head>
+    <title>Табличное представление данных</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1.5px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            cursor: pointer;
+        }
+
+        .form_input{
+            width: 490px;
+            padding: 10px;
+            margin: 10px 0;         /*расстояние между текстом и боксом*/
+            border: 1.5px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;         /*расстояние между полями*/
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div style="display:flex; flex-direction:column; justify-content: center; align-items: center; text-align: center;">
+    <div style="width: 70%">
+        <h1><i>Сортировка</i></h1>
+        
+        <label>
+            <input type="text" id="filterInput" class="form_input" placeholder="Фильтр">
+        </label>
+
+        <table id="dataTable">
+            <thead>
+            <tr>
+                <th onclick="sortTable(0)">Имя</th>
+                <th onclick="sortTable(1)">Возраст</th>
+                <th onclick="sortTable(2)">Специальность</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Макс</td>
+                <td>19</td>
+                <td>Примат</td>
+            </tr>
+            <tr>
+                <td>Диана</td>
+                <td>19</td>
+                <td>Примат</td>
+            </tr>
+            <tr>
+                <td>Андрей</td>
+                <td>22</td>
+                <td>Электроэнергетик</td>
+            </tr>
+            <tr>
+                <td>Андрей</td>
+                <td>20</td>
+                <td>Примат</td>
+            </tr>
+            <tr>
+                <td>Влад</td>
+                <td>19</td>
+                <td>Электроэнергетик</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function sortTable(columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("dataTable");
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.getElementsByTagName("tr");
+
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("td")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+
+    document.getElementById("filterInput").addEventListener("input", function() {
+        let filterValue = this.value.toLowerCase();
+        let table = document.getElementById("dataTable");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            let rowData = rows[i].getElementsByTagName("td");
+            let showRow = false;
+
+            for (let j = 0; j < rowData.length; j++) {
+                let cellData = rowData[j].innerHTML.toLowerCase();
+
+                if (cellData.indexOf(filterValue) > -1) {
+                    showRow = true;
+                    break;
+                }
+            }
+
+            rows[i].style.display = showRow ? "" : "none";
+        }
+    });
+</script>
+</body>
+</html>

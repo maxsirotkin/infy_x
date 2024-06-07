@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .drag-item {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            cursor: move;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        
+        .drop-area {
+            display: flex;
+            position:relative;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-content: start;
+            flex-wrap: wrap;
+            min-height: 260px;
+            width: 36%;
+            background-color: #f7f7f7;
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            gap:15px;
+        }
+
+        .drop-area__center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h1><i>Drag & Drop</i></h1>
+
+<div style="display: flex; flex-wrap: wrap; flex-direction: row; gap: 15px;">
+    
+    <div class="drag-item" style="background-color: #ea580f;" draggable="true">
+        <span>1</span>
+    </div>
+
+    <div class="drag-item" style="background-color: #98df2e;" draggable="true">
+        <span>2</span>
+    </div>
+
+    <div class="drag-item" style="background-color: #14aced;" draggable="true">
+        <span>3</span>
+    </div>
+
+    <div class="drag-item" style="background-color: #f3d31d;" draggable="true">
+        <span>4</span>
+    </div>
+
+</div>
+
+<div style="display: flex; flex-direction: column;">
+    <div class="drop-area" id="dropArea">
+        <span class="drop-area__center">Here</span>
+    </div>
+</div>
+
+<script>
+    let dragItem = document.getElementsByClassName('drag-item');
+    for (let i = 0; i < dragItem.length; i++) {
+        dragItem[i].id = `drag${i}`
+        dragItem[i].addEventListener('dragstart', drag);
+    }
+
+    let dropArea = document.getElementById('dropArea');
+
+    dropArea.addEventListener('dragover', allowDrop);
+    dropArea.addEventListener('drop', drop);
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData('text', event.target.id);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        let data = event.dataTransfer.getData('text');
+        let draggedItem = document.getElementById(data);
+
+        if (event.target.className === 'drop-area') {
+            event.target.appendChild(draggedItem);
+        }
+    }
+</script>
+</body>
+</html>
